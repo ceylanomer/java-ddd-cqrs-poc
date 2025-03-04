@@ -48,14 +48,14 @@ public class CommandBus {
     }
     
     /**
-     * Command'i işler (response döndürmez)
+     * Processes the command (does not return a response)
      */
     public <C extends Command, R extends BaseAggregate> void execute(C command) {
         executeWithResponse(command);
     }
     
     /**
-     * Command'i işler ve sonucu döner
+     * Processes the command and returns the result
      */
     @SuppressWarnings("unchecked")
     public <C extends Command, R extends BaseAggregate> R executeWithResponse(C command) {

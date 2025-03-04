@@ -24,17 +24,17 @@ public class CreateProductCommandHandler extends CommandHandler<CreateProductCom
     }
     
     /**
-     * Yeni ürün oluşturur
+     * Creates a new product
      */
     @Override
     @Transactional
     protected Product handle(CreateProductCommand command) {
         log.debug("Creating product with name: {}", command.getName());
         
-        // Domain entity'sini oluştur
+        // Create the domain entity
         Product product = Product.create(command.getName(), command.getPrice());
         
-        // Repository aracılığıyla kaydet
+        // Save through repository
         return productRepository.save(product);
     }
 } 

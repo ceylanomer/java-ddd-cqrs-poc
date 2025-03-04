@@ -6,32 +6,32 @@ import java.util.UUID;
 
 /**
  * Product repository interface
- * Domain katmanında tanımlanmış olup, infrastructure katmanında implement edilecektir.
- * Bu sayede domain katmanı, infrastructure katmanına bağımlı olmaz (Dependency Inversion).
+ * Defined in the domain layer and will be implemented in the infrastructure layer.
+ * This way, the domain layer does not depend on the infrastructure layer (Dependency Inversion).
  */
 public interface ProductRepository {
     /**
-     * Ürünü kaydeder veya günceller
+     * Saves or updates a product
      */
     Product save(Product product);
     
     /**
-     * ID'ye göre ürün bulur
+     * Finds a product by ID
      */
     Optional<Product> findById(UUID id);
     
     /**
-     * Tüm ürünleri listeler
+     * Lists all products
      */
     List<Product> findAll();
     
     /**
-     * Aktif ürünleri listeler
+     * Lists active products
      */
     List<Product> findByActiveTrue();
     
     /**
-     * Ürünü siler
+     * Deletes a product
      */
     void delete(UUID id);
 } 

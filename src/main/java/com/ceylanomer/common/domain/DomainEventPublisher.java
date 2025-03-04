@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Domain event'leri yayınlayan sınıf
+ * Class that publishes domain events
  */
 @Component
 @RequiredArgsConstructor
@@ -18,14 +18,14 @@ public class DomainEventPublisher {
     private final ApplicationEventPublisher applicationEventPublisher;
     
     /**
-     * Domain event'leri yayınlar
+     * Publishes domain events
      */
     public void publish(List<DomainEvent> events) {
         events.forEach(this::publish);
     }
     
     /**
-     * Tek bir domain event'i yayınlar
+     * Publishes a single domain event
      */
     public void publish(DomainEvent event) {
         log.debug("Publishing domain event: {}", event.getEventType());

@@ -7,7 +7,7 @@ import java.util.UUID;
 import com.ceylanomer.common.domain.AbstractDomainEvent;
 
 /**
- * Ürün deaktif edildiğinde yayınlanan event
+ * Event published when a product is deactivated
  */
 @Getter
 public class ProductDeactivatedEvent extends AbstractDomainEvent {

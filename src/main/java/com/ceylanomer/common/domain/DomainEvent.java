@@ -8,17 +8,17 @@ import java.util.UUID;
  */
 public interface DomainEvent {
     /**
-     * Event ID'sini döner
+     * Returns the event ID
      */
     UUID getEventId();
     
     /**
-     * Event oluşturulma zamanını döner
+     * Returns the event creation time
      */
     Instant getOccurredOn();
     
     /**
-     * Event tipini döner
+     * Returns the event type
      */
     String getEventType();
 } 

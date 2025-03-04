@@ -6,7 +6,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 /**
- * Domain event'lerin temel sınıfı
+ * Base class for domain events
  */
 @Getter
 public abstract class AbstractDomainEvent implements DomainEvent {

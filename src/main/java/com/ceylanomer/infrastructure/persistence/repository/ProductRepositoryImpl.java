@@ -13,7 +13,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * ProductRepository interface'inin JPA implementasyonu
+ * JPA implementation of the ProductRepository interface
  */
 @Component
 @RequiredArgsConstructor
@@ -54,7 +54,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
     
     /**
-     * Domain entity'sini JPA entity'sine dönüştürür
+     * Converts domain entity to JPA entity
      */
     private ProductEntity toEntity(Product product) {
         return new ProductEntity(
@@ -66,7 +66,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
     
     /**
-     * JPA entity'sini domain entity'sine dönüştürür
+     * Converts JPA entity to domain entity
      */
     private Product toDomain(ProductEntity entity) {
         Product product = Product.create(entity.getName(), entity.getPrice());

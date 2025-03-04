@@ -2,7 +2,7 @@ package com.ceylanomer.common.command;
 
 /**
  * Command interface
- * Tüm command'ler bu interface'i implement etmelidir
+ * All commands should implement this interface
  */
 public interface Command {
 } 

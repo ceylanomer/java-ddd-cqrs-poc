@@ -24,7 +24,7 @@ public class ProductQueryService {
     private final ProductRepository productRepository;
     
     /**
-     * ID'ye göre ürün bulur
+     * Finds a product by ID
      */
     public Optional<ProductDto> findById(UUID id) {
         return productRepository.findById(id)
@@ -32,7 +32,7 @@ public class ProductQueryService {
     }
     
     /**
-     * Tüm ürünleri listeler
+     * Lists all products
      */
     public List<ProductDto> findAll() {
         return productRepository.findAll().stream()
@@ -41,7 +41,7 @@ public class ProductQueryService {
     }
     
     /**
-     * Aktif ürünleri listeler
+     * Lists active products
      */
     public List<ProductDto> findActiveProducts() {
         return productRepository.findByActiveTrue().stream()
@@ -50,7 +50,7 @@ public class ProductQueryService {
     }
     
     /**
-     * Product entity'sini DTO'ya dönüştürür
+     * Converts Product entity to DTO
      */
     private ProductDto mapToDto(Product product) {
         return new ProductDto(

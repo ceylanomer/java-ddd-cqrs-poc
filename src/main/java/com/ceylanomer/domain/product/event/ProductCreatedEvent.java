@@ -8,7 +8,7 @@ import java.util.UUID;
 import com.ceylanomer.common.domain.AbstractDomainEvent;
 
 /**
- * Ürün oluşturulduğunda yayınlanan event
+ * Event published when a product is created
  */
 @Getter
 public class ProductCreatedEvent extends AbstractDomainEvent {

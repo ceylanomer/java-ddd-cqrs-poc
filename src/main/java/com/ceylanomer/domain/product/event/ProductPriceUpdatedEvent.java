@@ -8,7 +8,7 @@ import java.util.UUID;
 import com.ceylanomer.common.domain.AbstractDomainEvent;
 
 /**
- * Ürün fiyatı güncellendiğinde yayınlanan event
+ * Event published when a product price is updated
  */
 @Getter
 public class ProductPriceUpdatedEvent extends AbstractDomainEvent {

@@ -25,25 +25,25 @@ public class ChangeProductStatusCommandHandler extends CommandHandler<ChangeProd
     }
     
     /**
-     * Ürün durumunu değiştirir
+     * Changes the product status
      */
     @Override
     @Transactional
     protected Product handle(ChangeProductStatusCommand command) {
         log.debug("Changing product status with id: {}, active: {}", command.getId(), command.isActive());
         
-        // Repository'den ürünü bul
+        // Find the product from repository
         Product product = productRepository.findById(command.getId())
                 .orElseThrow(() -> new ApiDataNotFoundException("product.not.found", command.getId().toString()));
         
-        // Domain entity'sinin durumunu güncelle
+        // Update the status of the domain entity
         if (command.isActive()) {
             product.activate();
         } else {
             product.deactivate();
         }
         
-        // Repository aracılığıyla kaydet
+        // Save through repository
         return productRepository.save(product);
     }
 } 

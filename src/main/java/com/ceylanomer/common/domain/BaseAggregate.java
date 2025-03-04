@@ -7,28 +7,28 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Tüm aggregate'lerin temel sınıfı
+ * Base class for all aggregates
  */
 @Getter
 public abstract class BaseAggregate {
     private final List<DomainEvent> domainEvents = new ArrayList<>();
     
     /**
-     * Domain event ekler
+     * Adds a domain event
      */
     protected void registerEvent(DomainEvent event) {
         this.domainEvents.add(event);
     }
     
     /**
-     * Domain event'leri temizler
+     * Clears all domain events
      */
     public void clearEvents() {
         this.domainEvents.clear();
     }
     
     /**
-     * Aggregate ID'sini döner
+     * Returns the aggregate ID
      */
     public abstract UUID getId();
 } 

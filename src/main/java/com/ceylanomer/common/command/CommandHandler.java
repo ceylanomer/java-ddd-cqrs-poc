@@ -8,8 +8,8 @@ import com.ceylanomer.common.domain.BaseAggregate;
 import com.ceylanomer.common.domain.DomainEventPublisher;
 
 /**
- * Command handler abstract sınıfı
- * Tüm command handler'lar bu sınıfı extend etmelidir
+ * Command handler abstract class
+ * All command handlers should extend this class
  */
 @Setter
 @Slf4j
@@ -19,12 +19,12 @@ public abstract class CommandHandler<C extends Command, R extends BaseAggregate>
     private DomainEventPublisher domainEventPublisher;
     
     /**
-     * Command'i işler
+     * Handles the command
      */
     protected abstract R handle(C command);
     
     /**
-     * Command'i işler ve domain event'leri yayınlar
+     * Processes the command and publishes domain events
      */
     public R process(C command) {
         R result = handleCommand(command);
@@ -34,10 +34,14 @@ public abstract class CommandHandler<C extends Command, R extends BaseAggregate>
     }
     
     /**
-     * Command'i işler
+     * Handles the command and logs any exceptions
      */
     protected R handleCommand(C command) {
-        log.debug("Handling command: {}", command.getClass().getSimpleName());
-        return handle(command);
+        try {
+            return handle(command);
+        } catch (Exception e) {
+            log.error("Error handling command: {}", command.getClass().getSimpleName(), e);
+            throw e;
+        }
     }
 } 

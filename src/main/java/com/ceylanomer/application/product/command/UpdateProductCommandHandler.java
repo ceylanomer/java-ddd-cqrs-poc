@@ -25,22 +25,22 @@ public class UpdateProductCommandHandler extends CommandHandler<UpdateProductCom
     }
     
     /**
-     * Ürün günceller
+     * Updates a product
      */
     @Override
     @Transactional
     protected Product handle(UpdateProductCommand command) {
         log.debug("Updating product with id: {}", command.getId());
         
-        // Repository'den ürünü bul
+        // Find the product from repository
         Product product = productRepository.findById(command.getId())
                 .orElseThrow(() -> new ApiDataNotFoundException("product.not.found", command.getId().toString()));
         
-        // Domain entity'sini güncelle
+        // Update the domain entity
         product.updateName(command.getName());
         product.updatePrice(command.getPrice());
         
-        // Repository aracılığıyla kaydet
+        // Save through repository
         return productRepository.save(product);
     }
 } 

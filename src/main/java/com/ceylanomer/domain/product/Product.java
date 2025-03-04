@@ -28,7 +28,7 @@ public class Product extends BaseAggregate {
     private boolean active;
 
     /**
-     * Yeni bir Product oluşturur
+     * Creates a new Product
      */
     public static Product create(String name, BigDecimal price) {
         if (name == null || name.trim().isEmpty()) {
@@ -45,14 +45,14 @@ public class Product extends BaseAggregate {
         product.price = price;
         product.active = true;
         
-        // Domain event'i kaydet
+        // Register domain event
         product.registerEvent(new ProductCreatedEvent(product.id, name, price));
         
         return product;
     }
     
     /**
-     * Ürün fiyatını günceller
+     * Updates the product price
      */
     public void updatePrice(BigDecimal newPrice) {
         if (newPrice == null || newPrice.compareTo(BigDecimal.ZERO) <= 0) {
@@ -62,12 +62,12 @@ public class Product extends BaseAggregate {
         BigDecimal oldPrice = this.price;
         this.price = newPrice;
         
-        // Domain event'i kaydet
+        // Register domain event
         registerEvent(new ProductPriceUpdatedEvent(this.id, oldPrice, newPrice));
     }
     
     /**
-     * Ürün adını günceller
+     * Updates the product name
      */
     public void updateName(String newName) {
         if (newName == null || newName.trim().isEmpty()) {
@@ -77,30 +77,30 @@ public class Product extends BaseAggregate {
         String oldName = this.name;
         this.name = newName;
         
-        // Domain event'i kaydet
+        // Register domain event
         registerEvent(new ProductNameUpdatedEvent(this.id, oldName, newName));
     }
     
     /**
-     * Ürünü aktif eder
+     * Activates the product
      */
     public void activate() {
         if (!this.active) {
             this.active = true;
             
-            // Domain event'i kaydet
+            // Register domain event
             registerEvent(new ProductActivatedEvent(this.id));
         }
     }
     
     /**
-     * Ürünü deaktif eder
+     * Deactivates the product
      */
     public void deactivate() {
         if (this.active) {
             this.active = false;
             
-            // Domain event'i kaydet
+            // Register domain event
             registerEvent(new ProductDeactivatedEvent(this.id));
         }
     }
