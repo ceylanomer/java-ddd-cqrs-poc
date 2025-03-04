@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * Command bus
- * Command'leri ilgili handler'lara yönlendirir
+ * Routes commands to their respective handlers
  */
 @Service
 @Slf4j
