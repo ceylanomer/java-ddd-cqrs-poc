@@ -13,8 +13,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * Product için query service
- * CQRS pattern'ine uygun olarak, okuma işlemleri için ayrı bir servis
+ * Query service for Product
+ * In accordance with the CQRS pattern, a separate service for read operations
  */
 @Service
 @RequiredArgsConstructor

@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
- * Product için Data Transfer Object
- * Query sonuçlarında kullanılır
+ * Data Transfer Object for Product
+ * Used in query results
  */
 @Data
 @NoArgsConstructor

@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Product için Spring Data JPA repository
+ * Spring Data JPA repository for Product
  */
 @Repository
 public interface ProductJpaRepository extends JpaRepository<ProductEntity, UUID> {
     
     /**
-     * Aktif ürünleri bulur
+     * Finds active products
      */
     List<ProductEntity> findByActiveTrue();
 } 

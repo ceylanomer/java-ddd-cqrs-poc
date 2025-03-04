@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * UpdateProductCommand için handler
+ * Handler for UpdateProductCommand
  */
 @Service
 @Slf4j

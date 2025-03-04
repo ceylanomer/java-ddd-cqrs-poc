@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import com.ceylanomer.common.command.Command;
 
 /**
- * Yeni ürün oluşturmak için command
+ * Command to create a new product
  */
 @Data
 @NoArgsConstructor

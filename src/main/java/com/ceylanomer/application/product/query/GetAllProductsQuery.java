@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Tüm ürünleri getirmek için query
+ * Query to retrieve all products
  */
 @Getter
 @Setter

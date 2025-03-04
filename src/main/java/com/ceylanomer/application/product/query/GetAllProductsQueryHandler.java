@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * GetAllProductsQuery için handler
+ * Handler for GetAllProductsQuery
  */
 @Service
 @RequiredArgsConstructor

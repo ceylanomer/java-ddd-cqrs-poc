@@ -15,7 +15,7 @@ import java.util.UUID;
 import com.ceylanomer.common.entity.AbstractAuditingEntity;
 
 /**
- * Product için JPA entity
+ * JPA entity for Product
  */
 @Entity
 @Table(name = "products")

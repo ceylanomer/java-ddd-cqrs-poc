@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * CreateProductCommand için handler
+ * Handler for CreateProductCommand
  */
 @Service
 @Slf4j

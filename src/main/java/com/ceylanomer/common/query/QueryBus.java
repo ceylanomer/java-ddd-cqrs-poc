@@ -26,7 +26,7 @@ public class QueryBus {
     }
     
     /**
-     * Handler'ları otomatik olarak kaydeder
+     * Automatically registers handlers
      */
     @PostConstruct
     public void registerHandlers() {

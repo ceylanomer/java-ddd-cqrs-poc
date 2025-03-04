@@ -71,7 +71,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     private Product toDomain(ProductEntity entity) {
         Product product = Product.create(entity.getName(), entity.getPrice());
         
-        // Reflection kullanarak private field'ları set etme (DDD için ideal değil, ama pratik bir çözüm)
+        // Using reflection to set private fields (not ideal for DDD, but a practical solution)
         try {
             java.lang.reflect.Field idField = Product.class.getDeclaredField("id");
             idField.setAccessible(true);

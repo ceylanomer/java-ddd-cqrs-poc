@@ -10,7 +10,7 @@ import java.util.UUID;
 import com.ceylanomer.common.command.Command;
 
 /**
- * Ürün güncellemek için command
+ * Command to update a product
  */
 @Data
 @NoArgsConstructor

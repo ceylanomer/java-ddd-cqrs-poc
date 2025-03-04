@@ -9,7 +9,7 @@ import java.util.UUID;
 import com.ceylanomer.common.query.Query;
 
 /**
- * ID'ye göre ürün getirmek için query
+ * Query to retrieve a product by ID
  */
 @Data
 @NoArgsConstructor

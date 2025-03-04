@@ -28,7 +28,7 @@ public class CommandBus {
     }
     
     /**
-     * Handler'ları otomatik olarak kaydeder
+     * Automatically registers handlers
      */
     @PostConstruct
     public void registerHandlers() {

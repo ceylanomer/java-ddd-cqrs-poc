@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 /**
- * GetProductByIdQuery için handler
+ * Handler for GetProductByIdQuery
  */
 @Service
 @RequiredArgsConstructor

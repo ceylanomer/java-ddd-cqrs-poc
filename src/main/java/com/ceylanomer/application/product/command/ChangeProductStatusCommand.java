@@ -9,7 +9,7 @@ import java.util.UUID;
 import com.ceylanomer.common.command.Command;
 
 /**
- * Ürün durumunu değiştirmek için command
+ * Command to change product status
  */
 @Data
 @NoArgsConstructor

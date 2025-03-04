@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 
 /**
- * DeleteProductCommand için handler
+ * Handler for DeleteProductCommand
  */
 @Service
 @Slf4j
@@ -27,22 +27,22 @@ public class DeleteProductCommandHandler extends CommandHandler<DeleteProductCom
     }
     
     /**
-     * Ürün siler
+     * Deletes a product
      */
     @Override
     @Transactional
     protected Product handle(DeleteProductCommand command) {
         log.debug("Deleting product with id: {}", command.getId());
         
-        // Repository'den ürünü bul
+        // Find the product from repository
         UUID productId = command.getId();
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ApiDataNotFoundException("product.not.found", productId.toString()));
         
-        // Ürünü deaktif et
+        // Deactivate the product
         product.deactivate();
         
-        // Repository aracılığıyla kaydet
+        // Save through repository
         return productRepository.save(product);
     }
 } 

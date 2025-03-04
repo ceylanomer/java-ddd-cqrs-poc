@@ -17,10 +17,10 @@ import java.util.UUID;
 
 /**
  * Product Aggregate Root
- * DDD prensiplerine uygun olarak, tüm iş mantığı bu aggregate içinde yer alır.
+ * In accordance with DDD principles, all business logic is contained within this aggregate.
  */
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA için gerekli
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // Required for JPA
 public class Product extends BaseAggregate {
     private UUID id;
     private String name;
