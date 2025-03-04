@@ -1,0 +1,89 @@
+package com.ceylanomer.infrastructure.persistence.repository;
+
+import com.ceylanomer.domain.product.Product;
+import com.ceylanomer.domain.product.ProductRepository;
+import com.ceylanomer.infrastructure.persistence.entity.ProductEntity;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+/**
+ * ProductRepository interface'inin JPA implementasyonu
+ */
+@Component
+@RequiredArgsConstructor
+public class ProductRepositoryImpl implements ProductRepository {
+    
+    private final ProductJpaRepository productJpaRepository;
+    
+    @Override
+    public Product save(Product product) {
+        ProductEntity entity = toEntity(product);
+        ProductEntity savedEntity = productJpaRepository.save(entity);
+        return toDomain(savedEntity);
+    }
+    
+    @Override
+    public Optional<Product> findById(UUID id) {
+        return productJpaRepository.findById(id)
+                .map(this::toDomain);
+    }
+    
+    @Override
+    public List<Product> findAll() {
+        return productJpaRepository.findAll().stream()
+                .map(this::toDomain)
+                .collect(Collectors.toList());
+    }
+    
+    @Override
+    public List<Product> findByActiveTrue() {
+        return productJpaRepository.findByActiveTrue().stream()
+                .map(this::toDomain)
+                .collect(Collectors.toList());
+    }
+    
+    @Override
+    public void delete(UUID id) {
+        productJpaRepository.deleteById(id);
+    }
+    
+    /**
+     * Domain entity'sini JPA entity'sine dönüştürür
+     */
+    private ProductEntity toEntity(Product product) {
+        return new ProductEntity(
+                product.getId(),
+                product.getName(),
+                product.getPrice(),
+                product.isActive()
+        );
+    }
+    
+    /**
+     * JPA entity'sini domain entity'sine dönüştürür
+     */
+    private Product toDomain(ProductEntity entity) {
+        Product product = Product.create(entity.getName(), entity.getPrice());
+        
+        // Reflection kullanarak private field'ları set etme (DDD için ideal değil, ama pratik bir çözüm)
+        try {
+            java.lang.reflect.Field idField = Product.class.getDeclaredField("id");
+            idField.setAccessible(true);
+            idField.set(product, entity.getId());
+            
+            java.lang.reflect.Field activeField = Product.class.getDeclaredField("active");
+            activeField.setAccessible(true);
+            activeField.set(product, entity.isActive());
+        } catch (Exception e) {
+            throw new RuntimeException("Error mapping entity to domain", e);
+        }
+        
+        return product;
+    }
+} 

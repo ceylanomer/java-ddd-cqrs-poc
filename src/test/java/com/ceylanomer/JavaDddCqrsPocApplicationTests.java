@@ -1,9 +1,11 @@
-package com.ceylanomer.java_ddd_cqrs_poc;
+package com.ceylanomer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class JavaDddCqrsPocApplicationTests {
 
 	@Test

@@ -1,4 +1,4 @@
-package com.ceylanomer.java_ddd_cqrs_poc;
+package com.ceylanomer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
